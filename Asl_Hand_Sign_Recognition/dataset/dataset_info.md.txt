@@ -1,0 +1,45 @@
+# ASL Hand Landmark Dataset Description
+
+##  Overview
+This dataset is a **custom-built American Sign Language (ASL) alphabet dataset**
+created using **hand landmark extraction** instead of raw images.
+
+Each sample represents a **single ASL alphabet gesture** encoded as a **sequence
+of 21 hand landmarks per frame**, making the dataset lightweight, robust, and
+suitable for deep learning–based sequence modeling.
+
+
+## Landmark Extraction Method
+- Hand landmarks are extracted using a Python script
+- **21 landmarks per hand**
+- Each landmark contains:
+  - `x` → normalized horizontal coordinate
+  - `y` → normalized vertical coordinate
+  - `z` → depth coordinate
+
+Landmarks are extracted **frame-by-frame** and stored as sequences.
+
+
+##  Data Representation
+	21 landmarks × 3 coordinates (x, y, z) = 63 features
+
+### Per Frame
+	Shape: (16, 21, 3)
+
+- 16 → number of frames per gesture
+- 21 → hand landmarks
+- 3 → (x, y, z)
+
+Before training, the data is reshaped to :-
+
+## Dataset Directory Structure
+dataset/landmarks/
+├── A/
+│ ├── A_001.npy
+│ ├── A_002.npy
+│ └── ...
+├── B/
+│ ├── B_001.npy
+│ └── ...
+├── C/
+└── ...
